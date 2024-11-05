@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sticky Header and Sidebar with Bulma</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <style>
+    /* Sticky header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      /* background-color: white; */
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    }
+
+    /* Sticky sidebar */
+    .sidebar {
+      position: sticky;
+      top: 56px; /* Adjust based on header height */
+      height: calc(100vh - 56px); /* Full height minus header */
+      overflow-y: auto;
+    }
+
+    /* Main content area */
+    .content-area {
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <strong>MyApp</strong>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main layout -->
+  <div class="columns">
+    <!-- Sidebar -->
+    <aside class="column is-2 sidebar">
+      <div class="menu">
+        <p class="menu-label">Navigation</p>
+        <ul class="menu-list">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main content area -->
+    <main class="column content-area">
+      <h1 class="title">Main Content</h1>
+      <p>Scroll down to see the sticky header and sidebar in action.</p>
+      <!-- Add some content to demonstrate scrolling -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Phasellus maximus magna vitae velit hendrerit, at laoreet ex iaculis. Duis ac lectus eget mauris pulvinar ultricies ut id augue. Fusce congue eget lacus eget cursus...</p>
+      <p>...more content...</p>
+
+      <!-- Repeat the above content to make the page scrollable -->
+    </main>
+  </div>
+
+</body>
+</html>
