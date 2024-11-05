@@ -2,3 +2,35 @@
  (:class qlot/source/dist:source-dist
   :initargs (:distribution "https://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
   :version "2024-10-12"))
+("spinneret" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "ruricolist/spinneret" :ref nil :branch nil :tag nil)
+  :version "github-fe03f8bbfcb2e759d7a0fdfbebfc1d02c109810e"))
+("staple" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "Shinmera/staple" :ref nil :branch nil :tag nil)
+  :version "github-aad562f69210776df85c106a96f618f098a0202d"))
+("lass" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "Shinmera/lass" :ref nil :branch nil :tag nil)
+  :version "github-11cb4599c82934c7ab0310fa0ca6aaf48de73e60"))
+("clip" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "Shinmera/clip" :ref nil :branch nil :tag nil)
+  :version "github-32ca03eb50a80c7b16771b3d534e90f2d71c8f54"))
+("metatilities-base" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "hraban/metatilities-base" :ref nil :branch nil :tag nil)
+  :version "github-ef04337759972fd622c9b27b53149f3d594a841f"))
+("metatilities" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "hraban/metatilities" :ref nil :branch nil :tag nil)
+  :version "github-82e13df0545d0e47ae535ea35c5c99dd3a44e69e"))
+("moptilities" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "hraban/moptilities" :ref nil :branch nil :tag nil)
+  :version "github-a436f16b357c96b82397ec018ea469574c10dd41"))
+("tinaa" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "hraban/tinaa" :ref nil :branch nil :tag nil)
+  :version "github-f90cef5786030d1a0d57fda28d518bd44e58a121"))
