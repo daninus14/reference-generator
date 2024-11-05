@@ -1,2 +1,6 @@
-# reference-generator
+* reference-generator
 Common Lisp Reference Generator
+
+> CL Reference Generator and Utilities to Introspect CL Systems
+
+This project is to provide a generator, and utilities for generating, reference documentation for Common Lisp systems, packages, symbols, classes, functions, etc.
