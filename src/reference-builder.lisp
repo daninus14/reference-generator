@@ -99,8 +99,18 @@ If PACKAGE is a keyword, find the corresponding package. Raise an error if the p
       (format t "Generic Functions: ~a~%" generic-func-docs)
       (format t "Functions: ~a~%" func-docs))))
 
-;; Example usage:
-(print-unique-symbols-documentation :reference-generator) ; Using a keyword
-(print-unique-symbols-documentation :reference-generator) ; Using a package directly
+(defgeneric packages-for-system (system)
+  (:documentation "Get a list of all packages associated with the given ASDF SYSTEM-NAME."))
 
+(defmethod packages-for-system (system)
+  (let ((system (asdf:find-system system)))
+    (if system
+        (packages-for-system system)
+        (error "System ~A not found." system))))
 
+(defmethod packages-for-system ((system asdf:system))
+  ;; (mapcar #'staple::ensure-package-definition (staple:packages system))
+  (staple:packages system))
+
+;; getting the package name
+;; (staple::designator package)
