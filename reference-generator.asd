@@ -6,5 +6,8 @@
   :components ((:module "src"
                 :components
                 ((:file "packages")
+                 (:file "reflection")
+                 (:file "classes")
+                 (:file "reference-builder")
                  (:file "reference-generator"))))
   :description "CL Reference Generator and Utilities to Introspect CL Systems")

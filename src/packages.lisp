@@ -1,4 +1,4 @@
 (in-package :cl-user)
 
 (defpackage reference-generator
-  (:use :cl))
+  (:use :cl :spinneret))
