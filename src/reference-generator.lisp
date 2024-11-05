@@ -61,6 +61,23 @@
             (:tbody (loop for el in elements
                           do (doc-row el))))))))
 
+(defun doc-card (el)
+  (with-html
+    (:div :class "card"
+          (:header :class "card-header" (name el))
+          (:div :class "card-content"
+                (:div :class "content" (description el))))))
+
+(defun doc-card-list (elements &optional title)
+  (with-html
+    (:div :class "column"
+          (:h3 :class "subtitle" title)))  
+
+  (with-html
+    (loop for el in elements
+          do (:div :class "column"
+                   (doc-card el)))))
+
 (defun package-section (package)
   (with-html
     (:div
@@ -71,6 +88,17 @@
      (documentation-table (document-unique-conditions package) "Conditions")
      (documentation-table (document-unique-generic-functions package) "Generic Functions")
      (documentation-table (document-unique-functions package) "Functions"))))
+
+(defun package-section-cards (package)
+  (with-html
+    (:div
+     :class "columns"
+     ;; (org.shirakumo.definitions:designator package)
+     (doc-card-list (document-unique-classes package) "Classes")
+     (doc-card-list (document-unique-variables package) "Variables")
+     (doc-card-list (document-unique-conditions package) "Conditions")
+     (doc-card-list (document-unique-generic-functions package) "Generic Functions")
+     (doc-card-list (document-unique-functions package) "Functions"))))
 
 (defgeneric doc-row (el)
   (:documentation "See documentation-table for details."))
@@ -103,7 +131,19 @@
         (loop for package in (packages-for-system system-name)
               do (package-section package))))))
 
+(defun generate-system-docs-string-cards (system-name)
+  (with-output-to-string (out)
+    (let ((*html* out)
+          (*html-style* :tree))
+      (with-page
+          (:title (symbol-name system-name))
+        (loop for package in (packages-for-system system-name)
+              do (package-section-cards package))))))
+
 (defun generate-system-docs (system-name)
   (write-docs-index-html (generate-system-docs-string system-name)
                          :if-exists :supersede))
 
+(defun generate-system-docs-cards (system-name)
+  (write-docs-index-html (generate-system-docs-string-cards system-name)
+                         :if-exists :supersede))
