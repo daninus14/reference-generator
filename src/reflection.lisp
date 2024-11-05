@@ -110,3 +110,63 @@
         (push sym unique-generic-function-symbols)))
     unique-generic-function-symbols))
 
+
+;;; alternative API
+
+(defun functions-in-symbols-list (symbols-list)
+  "Return a list of symbols that are functions from SYMBOLS-LIST."
+  (remove-if-not #'fboundp symbols-list))
+
+(defun classes-in-symbols-list (symbols-list)
+  "Return a list of symbols that are classes from SYMBOLS-LIST."
+  (remove-if-not #'find-class symbols-list))
+
+(defun variables-in-symbols-list (symbols-list)
+  "Return a list of symbols that are global variables from SYMBOLS-LIST."
+  (remove-if-not #'boundp symbols-list))
+
+(defun conditions-in-symbols-list (symbols-list)
+  "Return a list of symbols that are conditions from SYMBOLS-LIST."
+  (remove-if-not (lambda (sym)
+                   (and (fboundp sym)
+                        (typep (symbol-function sym) 'condition)))
+                 symbols-list))
+
+(defun generic-functions-in-symbols-list (symbols-list)
+  "Return a list of symbols that are generic functions from SYMBOLS-LIST."
+  (remove-if-not (lambda (sym)
+                   (and (fboundp sym)
+                        (typep (symbol-function sym) 'generic-function)))
+                 symbols-list))
+
+(defun ensure-package (package)
+  "Ensure PACKAGE is a package object. Convert from a keyword if needed."
+  (cond
+    ((packagep package) package)
+    ((find-package package))
+    (t (error "Package ~A not found." package))))
+
+(defun package-symbols (package)
+  "Return a list of all symbols in PACKAGE, including both internal and external symbols."
+  (let ((pkg (ensure-package package))
+        (symbols '()))
+    (do-symbols (sym pkg)
+      (push sym symbols))
+    symbols))
+
+(defun unique-package-symbols (package)
+  "Return a list of all symbols that are unique to PACKAGE, not imported or inherited."
+  (let* ((pkg (ensure-package package))
+         (all-symbols (package-symbols pkg)))
+    (remove-if-not (lambda (sym)
+                     (eq (symbol-package sym) pkg))
+                   all-symbols)))
+
+(defun exported-package-symbols (package)
+  "Return a list of all symbols that are exported by PACKAGE."
+  (let ((pkg (ensure-package package))
+        (exported-symbols '()))
+    (do-external-symbols (sym pkg)
+      (push sym exported-symbols))
+    exported-symbols))
+
