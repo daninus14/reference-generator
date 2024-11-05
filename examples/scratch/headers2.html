@@ -51,6 +51,7 @@
     .menu-list a,
     .menu-list a:link,
     .menu-list a:visited {
+      background-color: transparent; /* Matches the sidebar color */
       color: var(--color-accent);
     }
 
@@ -58,6 +59,29 @@
       background-color: var(--color-accent);
       color: var(--color-text-dark);
     }
+
+    /* Responsive sidebar visibility */
+  .sidebar {
+    display: none;
+  }
+
+  .navbar-burger {
+    margin: 0.5rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+  }
+
+  /* Show sidebar on larger screens */
+  @media (min-width: 769px) {
+    .sidebar {
+      display: block;
+    }
+
+    .navbar-burger {
+      display: none;
+    }
+  }
+  
 
     /* Tabs styling */
     .tabs.is-boxed a,
@@ -78,35 +102,103 @@
       padding: 1.5rem;
     }
   </style>
+  <script>
+  // JavaScript to handle burger toggle for sidebar
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    burger.addEventListener('click', () => {
+      sidebarMenu.classList.toggle('is-active');
+    });
+  });
+</script>
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
-    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-          <strong>MyApp</strong>
-        </a>
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <strong>MyApp</strong>
+      </a>
+      <!-- Hamburger menu for mobile -->
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="#">About</a>
+        <a class="navbar-item" href="#">Services</a>
+        <a class="navbar-item" href="#">Contact</a>
+        <a class="navbar-item" href="#">Help</a>
       </div>
-    </nav>
-  </header>
+      <!-- Optional right-aligned items (e.g., user profile or settings) -->
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="#">Login</a>
+            <a class="button is-primary" href="#">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <!-- Header -->
+  <!-- <header class="header"> -->
+  <!--   <nav class="navbar is-primary" role="navigation" aria-label="main navigation"> -->
+  <!--     <div class="navbar-brand"> -->
+  <!--       <a class="navbar-item" href="#"> -->
+  <!--         <strong>MyApp</strong> -->
+  <!--       </a> -->
+  <!--     </div> -->
+  <!--   </nav> -->
+  <!-- </header> -->
 
   <!-- Main layout -->
   <div class="columns">
     <!-- Sidebar -->
-    <aside class="column is-2 sidebar">
-      <div class="menu mt-4">
-        <p class="menu-label ml-3">Navigation</p>
-        <ul class="menu-list">
-          <li><a style="background-color: rgb(7, 54, 66)" href="#">Dashboard</a></li>
-          <li><a style="background-color: rgb(7, 54, 66)" href="#">Profile</a></li>
-          <li><a style="background-color: rgb(7, 54, 66)" href="#">Settings</a></li>
-          <li><a style="background-color: rgb(7, 54, 66)" href="#">Messages</a></li>
-          <li><a style="background-color: rgb(7, 54, 66)" href="#">Logout</a></li>
-        </ul>
-      </div>
-    </aside>
+    <!-- <aside class="column is-2 sidebar"> -->
+    <!--   <div class="menu mt-4"> -->
+    <!--     <p class="menu-label ml-3">Navigation</p> -->
+    <!--     <ul class="menu-list"> -->
+    <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Dashboard</a></li> -->
+    <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Profile</a></li> -->
+    <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Settings</a></li> -->
+    <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Messages</a></li> -->
+    <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Logout</a></li> -->
+    <!--     </ul> -->
+    <!--   </div> -->
+    <!-- </aside> -->
+
+    <!-- Sidebar with responsive toggle -->
+<aside class="column is-2 sidebar">
+  <!-- Mobile Toggle Button -->
+  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="sidebarMenu">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebarMenu" class="menu">
+    <p class="menu-label">Navigation</p>
+    <ul class="menu-list">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Messages</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+</aside>
 
     <!-- Main content area -->
     <main class="column content-area">

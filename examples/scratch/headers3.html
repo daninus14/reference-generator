@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solarized Dark Sticky Layout with Bulma</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <style>
+      /* Solarized Dark-inspired colors */
+      :root {
+          --color-background: #002b36;
+          --color-sidebar: #073642;
+          --color-header: #586e75;
+          --color-accent: #b58900;
+          --color-text-light: #839496;
+          --color-text-dark: #fdf6e3;
+      }
+
+      /* General Layout */
+      body {
+          background-color: var(--color-background);
+          color: var(--color-text-light);
+      }
+
+      /* Header styling */
+      .header {
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          background-color: var(--color-sidebar);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .navbar-item,
+      .navbar-item:link,
+      .navbar-item:visited {
+          color: var(--color-text-dark);
+      }
+
+      /* Sidebar styling */
+      .sidebar {
+          position: sticky;
+          top: 56px; /* Adjust based on header height */
+          height: calc(100vh - 56px); /* Full height minus header */
+          overflow-y: auto;
+          background-color: var(--color-sidebar);
+          color: var(--color-text-light);
+      }
+
+      .menu-list a,
+      .menu-list a:link,
+      .menu-list a:visited {
+          background-color: transparent; /* Matches the sidebar color */
+          color: var(--color-accent);
+      }
+
+      .menu-list a:hover {
+          background-color: var(--color-accent);
+          color: var(--color-text-dark);
+      }
+
+      /* Hide sidebar on small screens */
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none; /* Completely hide on small screens */
+    }
+  }
+  
+      .navbar-burger {
+          margin: 0.5rem;
+          color: var(--color-text-light);
+          cursor: pointer;
+      }
+
+      /* Show sidebar on larger screens */
+      @media (min-width: 769px) {
+          .sidebar {
+              display: block;
+          }
+
+          .navbar-burger {
+              display: none;
+          }
+      }
+      
+
+      /* Tabs styling */
+      .tabs.is-boxed a,
+      .tabs.is-boxed a:link,
+      .tabs.is-boxed a:visited {
+          background-color: var(--color-sidebar);
+          color: var(--color-text-light);
+          border-color: var(--color-background);
+      }
+
+      .tabs.is-boxed a.is-active {
+          background-color: var(--color-accent);
+          color: var(--color-text-dark);
+      }
+
+      /* Main content styling */
+      .content-area {
+          padding: 1.5rem;
+      }
+    </style>
+<script>
+  // JavaScript to handle burger toggle for header menu
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    burger.addEventListener('click', () => {
+      navbarMenu.classList.toggle('is-hidden'); // Toggle the navbar menu visibility
+      burger.classList.toggle('is-active'); // Optional: change appearance of the burger when clicked
+    });
+  });
+</script>
+
+  </head>
+  <body>
+
+    <header class="header">
+      <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#">
+            <strong>MyApp</strong>
+          </a>
+          <!-- Hamburger menu for mobile -->
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#">Home</a>
+            <a class="navbar-item" href="#">About</a>
+            <a class="navbar-item" href="#">Services</a>
+            <a class="navbar-item" href="#">Contact</a>
+            <a class="navbar-item" href="#">Help</a>
+          </div>
+          <!-- Optional right-aligned items (e.g., user profile or settings) -->
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-light" href="#">Login</a>
+                <a class="button is-primary" href="#">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Header -->
+    <!-- <header class="header"> -->
+      <!--   <nav class="navbar is-primary" role="navigation" aria-label="main navigation"> -->
+        <!--     <div class="navbar-brand"> -->
+          <!--       <a class="navbar-item" href="#"> -->
+            <!--         <strong>MyApp</strong> -->
+            <!--       </a> -->
+          <!--     </div> -->
+        <!--   </nav> -->
+      <!-- </header> -->
+
+    <!-- Main layout -->
+    <div class="columns">
+      <!-- Sidebar -->
+      <!-- <aside class="column is-2 sidebar"> -->
+        <!--   <div class="menu mt-4"> -->
+          <!--     <p class="menu-label ml-3">Navigation</p> -->
+          <!--     <ul class="menu-list"> -->
+            <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Dashboard</a></li> -->
+            <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Profile</a></li> -->
+            <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Settings</a></li> -->
+            <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Messages</a></li> -->
+            <!--       <li><a style="background-color: rgb(7, 54, 66)" href="#">Logout</a></li> -->
+            <!--     </ul> -->
+          <!--   </div> -->
+        <!-- </aside> -->
+
+      <!-- Sidebar with responsive toggle -->
+      <aside class="column is-2 sidebar">
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="menu">
+          <p class="menu-label">Navigation</p>
+          <ul class="menu-list">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main content area -->
+      <main class="column content-area">
+        <h1 class="title" style="color: var(--color-accent);">Main Content</h1>
+        <p>Scroll down to see the sticky header and sidebar in action.</p>
+
+        <!-- Tabs (using Bulma's latest tabs component) -->
+        <div class="tabs is-boxed">
+          <ul>
+            <li class="is-active"><a>Tab 1</a></li>
+            <li><a>Tab 2</a></li>
+            <li><a>Tab 3</a></li>
+          </ul>
+        </div>
+
+        <!-- Placeholder content -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+
+        <p>...more content...</p>
+      </main>
+    </div>
+
+  </body>
+</html>
